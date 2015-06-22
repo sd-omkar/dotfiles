@@ -20,6 +20,11 @@ set backspace=indent,eol,start
 set listchars=tab:\|_
 set wildmode=full
 set wildmenu
+set nu
+set scrolloff=5
+set title
+set ruler
+set cursorline
 if v:version >= 703
   set undofile
   set undodir=~/.vim/undo
@@ -193,8 +198,8 @@ nmap ZW :w<CR>
 
 " Features {{{
 " Folding {{{
-set foldmethod=marker
-set foldenable
+"set foldmethod=marker
+"set foldenable
 "set foldlevel=4
 "set foldlevelstart=4
 nmap <silent> <leader>oi :set foldmethod=indent<CR>
