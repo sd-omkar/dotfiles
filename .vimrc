@@ -1,8 +1,10 @@
 " Init {{{
-runtime bundle/vim-pathogen/autoload/pathogen.vim
 set nocompatible
 filetype off
+runtime bundle/vim-pathogen/autoload/pathogen.vim
 call pathogen#infect()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 " }}}
 
 " Settings {{{
@@ -17,7 +19,9 @@ set nobackup
 set noswapfile
 set ruler
 set backspace=indent,eol,start
-set listchars=tab:\|_
+set list
+set listchars=tab:▸\ ,eol:¬
+"set listchars=tab:\|_
 set wildmode=full
 set wildmenu
 set nu
