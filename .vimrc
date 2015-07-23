@@ -19,8 +19,8 @@ set nobackup
 set noswapfile
 set ruler
 set backspace=indent,eol,start
-set list
-set listchars=tab:▸\ ,eol:¬
+set nolist
+"set listchars=tab:▸\ ,eol:¬
 "set listchars=tab:\|_
 set wildmode=full
 set wildmenu
@@ -29,6 +29,7 @@ set scrolloff=5
 set title
 set ruler
 set cursorline
+set mouse=a
 if v:version >= 703
   set undofile
   set undodir=~/.vim/undo
@@ -41,6 +42,14 @@ endif
 
 let g:tex_flavor = "latex"
 let mapleader = ','
+
+" BATS settings {{{
+au BufRead,BufNewFile *.bats        set filetype=sh
+syn match batsTest              "\v\@test"
+syn keyword batsKeyword         run containedin=shExpr contained
+hi def link batsTest            Identifier
+hi def link batsKeyword         Keyword
+" }}}
 
 " Search settings {{{
 set hlsearch
@@ -186,7 +195,8 @@ map <Up> gk
 map <Down> gj
 
 " <S-M-L> to clear highlights
-nmap <ESC>L :noh<CR>
+nnoremap <C-L> :nohl<CR><C-L>
+" nmap <ESC>L :noh<CR>
 
 vmap <leader>T :Tabularize /
 nmap <leader>T :Tabularize /
@@ -234,7 +244,7 @@ if has("autocmd")
         \ -interaction=nonstopmode\ %
   autocmd BufNewFile,BufRead *.1.md setlocal tw=78 makeprg=pandoc\ -s\ -w\
         \ man\ %\ -o\ %<
-  autocmd FileType make,snippet,snippets setlocal list ts=8 sw=8 sts=8 noet
+  autocmd FileType make,snippet,snippets setlocal nolist ts=8 sw=8 sts=8 noet
   autocmd FileType python,lua setlocal ts=4 sw=4 sts=4 et
   autocmd FileType vim let b:delimitMate_matchpairs = "(:),[:],{:},<:>"
   autocmd FileType lisp,scheme,clojure let b:delimitMate_quotes = '"'
