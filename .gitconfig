@@ -3,6 +3,8 @@
     # View abbreviated SHA, description, and history graph of the latest 20 commits
     # l = log --pretty=oneline --graph --abbrev-commit
 		ls = log --graph --abbrev-commit --decorate --pretty=format:'%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %C(cyan)%ce%Creset %C(green)(%cr)%Creset' --date=relative
+    lc = log ORIG_HEAD.. --stat --no-merges
+    ld = log --full-diff --stat -p
 		co = checkout
 
     # View the current working tree status using the short format

@@ -29,7 +29,6 @@ set scrolloff=5
 set title
 set ruler
 set cursorline
-set mouse=a
 if v:version >= 703
   set undofile
   set undodir=~/.vim/undo
