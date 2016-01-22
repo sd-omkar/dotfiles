@@ -10,7 +10,7 @@ call vundle#begin()
 " Settings {{{
 filetype plugin indent on
 syntax on
-set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 set smarttab
 set autoindent
 set autoread
