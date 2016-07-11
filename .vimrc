@@ -10,7 +10,7 @@ call vundle#begin()
 " Settings {{{
 filetype plugin indent on
 syntax on
-set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 set smarttab
 set autoindent
 set autoread
@@ -29,7 +29,6 @@ set scrolloff=5
 set title
 set ruler
 set cursorline
-set mouse=a
 if v:version >= 703
   set undofile
   set undodir=~/.vim/undo
@@ -233,7 +232,7 @@ map <silent> <leader>] :tab split<CR>:exec("tag ".expand("<cword>"))<CR>
 
 " Autocmd {{{
 if has("autocmd")
-  autocmd BufWritePre * :%s/\s\+$//e " remove trailing spaces
+  " autocmd BufWritePre * :%s/\s\+$//e " remove trailing spaces
   autocmd BufNewFile,BufRead *.json set ft=javascript
   augroup VIMRC " {{{
     autocmd!

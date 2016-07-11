@@ -1,36 +1,30 @@
-case $- in
-  *i*) ;;
-    *) return;;
-esac
+#!/usr/bin/env bash
 
-HISTCONTROL=ignoreboth:erasedupes
-shopt -s histappend
-shopt -s checkwinsize
-HISTSIZE=1000
-HISTFILESIZE=2000
+# Path to the bash it configuration
+export BASH_IT="$HOME/.bash_it"
 
-PS1='\[\e[0;32m\][\u \h] \[\e[0;33m\][\W$(_gb)] \[\e[0;31m\]\$\[\e[39m\] '
+# Lock and Load a custom theme file
+# location /.bash_it/themes/
+export BASH_IT_THEME='bobby'
 
-if shopt -oq posix; then :; else
-  if [ -s /etc/bash_completion ]; then
-    . /etc/bash_completion
-  elif [ -s /usr/local/etc/bash_completion ]; then
-    . /usr/local/etc/bash_completion
-  fi
-fi
+# Your place for hosting Git repos. I use this for private repos.
+export GIT_HOSTING='git@git.domain.com'
 
-[ -s "$HOME/.shenv" ] && source "$HOME/.shenv"
-[ -s "$HOME/.aliases" ] && source "$HOME/.aliases"
+# Don't check mail when opening terminal.
+unset MAILCHECK
 
-FASD_CACHE="$HOME/.fasd-init-bash"
+# Change this to your console based IRC client of choice.
+export IRC_CLIENT='irssi'
 
-if [ "$(which fasd)" -nt "$FASD_CACHE" -o ! -f "$FASD_CACHE" ]; then
-  fasd --init posix-alias bash-{hook,ccomp,ccomp-install} >| "$FASD_CACHE"
-fi
+# Set this to the command you use for todo.txt-cli
+export TODO="t"
 
-source "$FASD_CACHE"
+# Set this to false to turn off version control status checking within the prompt for all themes
+export SCM_CHECK=true
 
-_fasd_bash_hook_cmd_complete z e m
+# Set vcprompt executable path for scm advance info in prompt (demula theme)
+# https://github.com/xvzf/vcprompt
+#export VCPROMPT_EXECUTABLE=~/.vcprompt/bin/vcprompt
 
-[ -s "$HOME/.bashrc.local" ] && source "$HOME/.bashrc.local"
-
+# Load Bash It
+source $BASH_IT/bash_it.sh

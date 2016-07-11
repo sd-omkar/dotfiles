@@ -3,6 +3,8 @@
     # View abbreviated SHA, description, and history graph of the latest 20 commits
     # l = log --pretty=oneline --graph --abbrev-commit
 		ls = log --graph --abbrev-commit --decorate --pretty=format:'%C(yellow)%h%Creset -%C(yellow)%d%Creset %s %C(cyan)%ce%Creset %C(green)(%cr)%Creset' --date=relative
+    lc = log ORIG_HEAD.. --stat --no-merges
+    ld = log --full-diff --stat -p
 		co = checkout
 
     # View the current working tree status using the short format
@@ -43,11 +45,14 @@
     # Find branches containing commit
     fb = "!f() { git branch -a --contains $1; }; f"
 
+    # Find commit stats
+    fc = "!f() { git show $1 --stat; }; f"
+
     # Find tags containing commit
     ft = "!f() { git describe --always --contains $1; }; f"
 
     # Find commits by source code
-    fc = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
+    fs = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short -S$1; }; f"
 
     # Find commits by commit message
     fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
@@ -71,6 +76,7 @@
         fi \
     }; f"
 	alias = config --get-regexp ^alias\\.
+	apr = !/home/odeshmukh/go/bin/git-appraise
 
 [apply]
 
@@ -96,6 +102,7 @@
     # http://michael-kuehnel.de/git/2014/11/21/git-mac-osx-and-german-umlaute.html
     precomposeunicode = false
 	pager = less
+	editor = /usr/bin/vim
 
 [color]
 
